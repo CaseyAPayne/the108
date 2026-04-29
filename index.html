@@ -397,7 +397,7 @@
       document.getElementById(elementId).classList.add('selected');
     }
 
-    function generateAndCopy() {
+function generateAndCopy() {
       if (!currentHabit) {
         const wrapper = document.getElementById('habit-wrapper');
         wrapper.classList.remove('shake-error'); 
@@ -411,8 +411,13 @@
 
       let headerParts = [];
       if (show108) headerParts.push("The 108:");
-      if (showDate) headerParts.push(`${timelineData.shortDateString},`);
-      headerParts.push(timelineData.displayString); 
+      
+      // Build the time string with the Day first, then the Date
+      let timeString = timelineData.displayString;
+      if (showDate) {
+        timeString += `, ${timelineData.shortDateString}`;
+      }
+      headerParts.push(timeString);
       
       const headerLine = headerParts.join(" ");
 
