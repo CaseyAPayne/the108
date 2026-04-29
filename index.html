@@ -171,11 +171,34 @@
     cursor: pointer;
   }
 
+/* Custom Bulletproof Checkboxes */
   .toggles input[type="checkbox"] {
-    accent-color: var(--copy-bg);
-    width: 16px;
-    height: 16px;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--secondary-text);
+    border-radius: 4px;
+    background-color: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 0;
+  }
+
+  .toggles input[type="checkbox"]:checked {
+    background-color: var(--copy-bg);
+    border-color: var(--copy-bg);
+  }
+
+  /* The actual checkmark */
+  .toggles input[type="checkbox"]:checked::after {
+    content: "✔";
+    color: var(--copy-text);
+    font-size: 14px;
+    font-weight: bold;
   }
 
   .copy-btn {
