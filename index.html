@@ -409,17 +409,21 @@ function generateAndCopy() {
       const show108 = document.getElementById('toggle-108').checked;
       const showDate = document.getElementById('toggle-date').checked;
 
-      let headerParts = [];
-      if (show108) headerParts.push("The 108:");
+      let headerLine = "";
       
-      // Build the time string with the Day first, then the Date
+      // If "Show The 108" is checked, add it with a line break
+      if (show108) {
+        headerLine += "The 108:\n";
+      }
+      
+      // Build the time string
       let timeString = timelineData.displayString;
       if (showDate) {
         timeString += `, ${timelineData.shortDateString}`;
       }
-      headerParts.push(timeString);
       
-      const headerLine = headerParts.join(" ");
+      // Add the time string to the header line
+      headerLine += timeString;
 
       let dataLine = currentHabit;
       if (currentVibe !== "") {
